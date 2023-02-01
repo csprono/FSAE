@@ -12,9 +12,10 @@ class ebsNode(Node):
         self.get_logger().info("ebsNode Initialised")
 
     def on_msg(self, msg):
-        #self.ebs_pub_.publish()
-        self.get_logger().info("msg received")
-
+        payload = Bool() 
+                        
+        self.get_logger().info(f"range is {msg.range_min}m < 1m {msg.range_min < 1}")
+        self.ebs_pub_.publish(payload)
 
 def main(args=None):
     rclpy.init(args=args)
