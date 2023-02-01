@@ -1,0 +1,4 @@
+/namespace/ebs:
+  ros_parameters:
+    dist: 1.0
+    tol: 1e-5
