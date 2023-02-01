@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+import math
+
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Bool
@@ -12,14 +14,18 @@ class ebsNode(Node):
         self.get_logger().info("ebsNode Initialised")
 
     def on_msg(self, msg):
-        payload = Bool() 
-                        
-        self.get_logger().info(f"range is {msg.range_min}m < 1m {msg.range_min < 1}")
+        payload = Bool()
+        dist, tol = 1.0, 1e-5 
+        
+        payload.data = (not math.isclose(msg.range_min, dist, rel_tol=tol) 
+                        and msg.range_min < dist)
+        
+        self.get_logger().info(f"range is {msg.range_min}m < 1m {payload.data}")
         self.ebs_pub_.publish(payload)
 
 def main(args=None):
     rclpy.init(args=args)
-
+    
     node = ebsNode()
     rclpy.spin(node)
 
