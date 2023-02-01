@@ -1,0 +1,1 @@
+ros2 topic pub /lidar sensor_msgs/msg/LaserScan "{angle_min: 1.0, angle_max: 2.0, ranges:[1.0], intensities: []}"

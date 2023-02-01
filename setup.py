@@ -20,7 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-           "ebsNode = EBS.EBS.EBS_node:main"
+           "ebsNode = EBS.EBS_node:main"
         ],
     },
 )

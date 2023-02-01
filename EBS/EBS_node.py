@@ -12,7 +12,8 @@ class ebsNode(Node):
         self.get_logger().info("ebsNode Initialised")
 
     def on_msg(self, msg):
-        self.ebs_pub_.publish("received msg")
+        #self.ebs_pub_.publish()
+        self.get_logger().info("msg received")
 
 
 def main(args=None):
